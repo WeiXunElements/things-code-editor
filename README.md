@@ -31,31 +31,8 @@ Once running, you can preview your element at
 `http://localhost:8080/components/things-code-editor/`, where `things-code-editor` is the name of the directory containing it.
 
 
-## Testing Your Element
+## Example 1. Things code editor
+`<things-code-editor>` Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
-Simply navigate to the `/test` directory of your element to run its tests. If
-you are using Polyserve: `http://localhost:8080/components/things-code-editor/test/`
-
-### web-component-tester
-
-The tests are compatible with [web-component-tester](https://github.com/Polymer/web-component-tester).
-Install it via:
-
-    npm install -g web-component-tester
-
-Then, you can run your tests on _all_ of your local browsers via:
-
-    wct
-
-#### WCT Tips
-
-`wct -l chrome` will only run tests in chrome.
-
-`wct -p` will keep the browsers alive after test runs (refresh to re-run).
-
-`wct test/some-file.html` will test only the files you specify.
-
-
-## Yeoman support
-
-If you'd like to use Yeoman to scaffold your element that's possible. The official [`generator-polymer`](https://github.com/yeoman/generator-polymer) generator has a [`seed`](https://github.com/yeoman/generator-polymer#seed) subgenerator.
+## Example 2. Things template editor
+`<things-template-editor>`. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트

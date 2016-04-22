@@ -4,7 +4,7 @@
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
-  "description": "An element providing badge button.",
+  "description": "`<things-code-editor>` Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트",
   "keywords": [
     "web-component",
     "polymer",
@@ -18,7 +18,8 @@
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "juicy-ace-editor": "^1.1.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
