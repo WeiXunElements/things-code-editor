@@ -1,17 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
 
+<link rel="import" href="../things-button/things-button-bar.html">
+<link rel="import" href="../things-html-preview/things-html-preview.html">
+<link rel="import" href="../things-ajax/things-ajax.html">
+
 <!--
 `<things-template-editor>`. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
   Example:
     
-    <things-template-editor
-        id="template-editor"
-        theme="ace/theme/monokai"
-        mode="ace/mode/html"
-        fontsize="10"
-        tabsize="2"
-        source="<h1>Hello, this is Template Editor</h1>">
+    <things-template-editor 
+      id="template-editor"
+      theme="ace/theme/monokai"
+      mode="ace/mode/html"
+      resource="{{code_resource}}"
+      template-field="source"
+      save-url="saveUrl">
     </things-template-editor>
 
 @demo demo/demo-things-template-editor.html
@@ -126,6 +130,11 @@
         fontsize: {
           type: String,
           value: '14px'
+        },
+
+        source: {
+          type: String,
+          notify: true
         },
 
         /**

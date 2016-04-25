@@ -20,6 +20,8 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../juicy-ace-editor/juicy-ace-editor.html">
+  <link rel="import" href="../../things-html-preview/things-html-preview.html">
+  <link rel="import" href="../../things-button/things-button-bar.html">
   
   <link rel="import" href="../things-template-editor.html">
 
@@ -66,19 +68,29 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
 
       <dom-module id="sample-template-editor">
         <template>
-          <things-template-editor
+          <things-template-editor 
             id="template-editor"
             theme="ace/theme/monokai"
             mode="ace/mode/html"
-            fontsize="10"
-            tabsize="2"
-            source="<h1>Hello, this is Template Editor</h1>">
+            resource="{{code_resource}}"
+            template-field="source"
+            save-url="saveUrl">
           </things-template-editor>
         </template>
 
         <script>
           Polymer({
-            is: 'sample-template-editor'
+            is: 'sample-template-editor',
+
+            properties: {
+              code_resource: {
+                type: Object,
+                value: {
+                  name: 'test',
+                  source: '<body><h2>Things Template Editor</h2></body>'
+                }
+              }                  
+            }
           });
         </script>
       </dom-module>

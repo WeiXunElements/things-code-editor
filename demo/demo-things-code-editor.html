@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../juicy-ace-editor/juicy-ace-editor.html">
+  <link rel="import" href="../../things-button/things-button-bar.html">
   
   <link rel="import" href="../things-code-editor.html">
 
@@ -70,15 +71,25 @@ subject to an additional IP rights grant found at https://github.com/ThingsEleme
             id="code-editor"
             theme="ace/theme/monokai"
             mode="ace/mode/javascript"
-            fontsize="15px"
-            tabsize="2"
-            source="console.log('this is code editor');">
+            resource="{{code_resource}}"
+            template-field="source"
+            save-url="saveUrl">
           </things-code-editor>
         </template>
 
         <script>
           Polymer({
             is: 'sample-code-editor',
+
+            properties: {
+              code_resource: {
+                type: Object,
+                value: {
+                  name: 'test',
+                  source: '<body><h2>Things Template Editor</h2></body>'
+                }
+              }            
+            }
           });
         </script>
       </dom-module>
