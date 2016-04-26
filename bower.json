@@ -20,9 +20,9 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
     "juicy-ace-editor": "^1.1.1",
-    "things-button": "ThingsElements/things-button#^0.0.1",
-    "things-ajax": "ThingsElements/things-ajax",
-    "things-html-preview": "ThingsElements/things-html-preview#^0.0.1"
+    "things-button": "ThingsElements/things-button#latest",
+    "things-ajax": "ThingsElements/things-ajax#latest",
+    "things-html-preview": "ThingsElements/things-html-preview#latest"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
