@@ -1,24 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
-
-<link rel="import" href="../things-button/things-button-bar.html">
 <link rel="import" href="../things-html-preview/things-html-preview.html">
-<link rel="import" href="../things-ajax/things-ajax.html">
 
 <!--
-`<things-template-editor>`. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+things-template-editor. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
   Example:
     
-    <things-template-editor 
-      id="template-editor"
-      theme="ace/theme/monokai"
-      mode="ace/mode/html"
-      resource="{{code_resource}}"
-      template-field="source"
-      save-url="saveUrl">
+    <things-template-editor
+        id="template-editor"
+        theme="ace/theme/monokai"
+        mode="ace/mode/html"
+        fontsize="10"
+        tabsize="2"
+        source="<h1>Hello, this is Template Editor</h1>">
     </things-template-editor>
 
-@demo demo/demo-things-template-editor.html
+@demo ./things-code-editor/demo/demo-template-editor.html
 -->
 <dom-module id="things-template-editor">
   <template>
@@ -132,11 +129,6 @@
           value: '14px'
         },
 
-        source: {
-          type: String,
-          notify: true
-        },
-
         /**
          * if edit able
          */
@@ -174,11 +166,13 @@
          */
         buttons: {
           type: Array,
-          readonly: true,
-          value: [ {
-            id: 'save-btn',
-            text: 'Save'
-          } ]
+          readOnly: true,
+          value: function() {
+            return [ {
+             id: 'save-btn',
+              text: 'save'
+            } ];
+          }
         }
       },
 
@@ -208,18 +202,18 @@
        */
       _onResourceChanged: function(resource, templateField) {
         if(templateField) {
-          this.source = resource[templateField]
+          this.source = resource[templateField];
         }
       },
 
       /**
        * 모드가 ace/mode/html 일 경우 preview 버튼 표시
        */
-      _onModeChange: function(mode,buttons) {
+      _onModeChange: function(mode, buttons) {
         var result = buttons.filter(function(button) { return button.id === 'preview-btn'; })[0];
 
         if(mode === 'ace/mode/html' && !result) {
-          this.push('buttons', { id:'preview-btn', text:'Preview' });
+          this.push('buttons', { id:'preview-btn', text:'preview' });
         }
       },
 
@@ -259,6 +253,7 @@
         this.resource[this.templateField] = this.$['template-editor'].editor.getValue();
         this.saveResource = { id: this.resource.id };
         this.saveResource[this.templateField] = this.resource[this.templateField];
+        this.$['save-code'].resourceId = this.resource.id;
         this.$['save-code'].generateRequest();
       },
 
@@ -275,27 +270,8 @@
           this.$['html-preview'].hidden = false;
           this.$['html-preview'].srcdoc = this.$['template-editor'].editor.getValue();
         }
-      },
-
-      /***************************************************************************************
-       *                            Start detail item view interface
-       ***************************************************************************************/
-
-      /**
-       * detail item view를 구성하기 위한 필수 함수 
-       * item view를 구성한다.
-       *
-       * @return {Object} resource 리소스 데이터 (Object) 혹은 리소스 아이디 (Number)
-       */
-      loadDetailData: function(resource) {
-        if(resource) {
-          this.resource = resource;
-        }
       }
 
-      /***************************************************************************************
-       *                            End detail item view interface
-       ***************************************************************************************/      
     });
 
   </script>

@@ -1,9 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 
-<link rel="import" href="../things-button/things-button-bar.html">
-
 <!--
-`<things-code-editor>` Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
   Example:
     
@@ -16,7 +14,7 @@
       source="var source = function() { console.log('this is Code Editor') };">
     </things-code-editor>
 
-@demo demo/demo-things-code-editor.html
+@demo ./things-code-editor/demo/demo-code-editor.html
 -->
 <dom-module id="things-code-editor">
   <template>
@@ -51,12 +49,12 @@
       <things-button-bar id="button-bar" buttons="[[buttons]]"></things-button-bar>
     </div>
 
-<!--     <things-ajax 
+    <things-ajax 
       id="save-code" 
       resource-url="{{saveUrl}}" 
       resource-action="update" 
       body="{{saveResource}}">
-    </things-ajax> -->
+    </things-ajax>
   </template>
 
   <script>
@@ -170,7 +168,7 @@
           readonly: true,
           value: [ {
             id: 'save-btn',
-            text: 'Save'
+            text: 'save'
           } ]
         }
       },
@@ -198,6 +196,8 @@
        * @param {String} codeField
        */
       _onResourceChanged: function(resource, codeField) {
+        this.resource = resource;
+
         if(codeField) {
           this.source = resource[codeField]
         }
@@ -237,28 +237,9 @@
         this.resource[this.codeField] = this.$['code-editor'].editor.getValue();
         this.saveResource = { id: this.resource.id };
         this.saveResource[this.codeField] = this.resource[this.codeField];
+        this.$['save-code'].resourceId = this.resource.id;
         this.$['save-code'].generateRequest();
-      },
-
-      /***************************************************************************************
-       *                            Start detail item view interface
-       ***************************************************************************************/
-
-      /**
-       * detail item view를 구성하기 위한 필수 함수 
-       * item view를 구성한다.
-       *
-       * @return {Object} resource 리소스 데이터 (Object) 혹은 리소스 아이디 (Number)
-       */
-      loadDetailData: function(resource) {
-        if(resource) {
-          this.resource = resource;
-        }
       }
-
-      /***************************************************************************************
-       *                            End detail item view interface
-       ***************************************************************************************/      
     });
 
   </script>
