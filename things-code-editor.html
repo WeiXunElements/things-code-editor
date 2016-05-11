@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-
+<link rel="import" href="things-editor-script.html">
 <!--
 things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
@@ -34,9 +34,9 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       }
     </style>
 
-    <!-- ace-editor의 TEXT부분에 공백이 추가되지 않도록 {{zpl}}주의에 공백을 주지않도록 해야함. -->
+
     <div>
-      <juicy-ace-editor 
+      <things-editor-script 
         id="code-editor" 
         theme$="{{theme}}" 
         mode$="{{mode}}" 
@@ -44,7 +44,9 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
         readonly$="{{readonly}}" 
         softtabs$="{{softtabs}}" 
         tabsize$="{{tabsize}}" 
-        wrapmode$="{{wrapmode}}">{{source}}</juicy-ace-editor>
+        wrapmode$="{{wrapmode}}"
+        value ="{{source}}"></things-editor-script>
+
 
       <things-button-bar id="button-bar" buttons="[[buttons]]"></things-button-bar>
     </div>
@@ -223,10 +225,9 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       /**
        * called when editor's change event called
        */
-      _onEditorChange: function(after) {
-        this.resource[this.codeField] = this.$['code-editor'].editor.getValue();
+      _onEditorChange: function(e) {
+        this.resource[this.codeField] = e.detail.value;
       },
-
       /**
        * save code
        */
