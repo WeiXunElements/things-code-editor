@@ -1,6 +1,6 @@
 {
   "name": "things-code-editor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
-    "juicy-ace-editor": "^1.1.1",
+    "ace-builds": "~1.2.0",
     "things-button": "ThingsElements/things-button",
     "things-ajax": "ThingsElements/things-ajax",
     "things-html-preview": "ThingsElements/things-html-preview"
