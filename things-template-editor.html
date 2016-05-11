@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../things-html-preview/things-html-preview.html">
+<link rel="import" href="things-editor-script.html">
 
 <!--
 things-template-editor. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
@@ -15,7 +16,7 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
         source="<h1>Hello, this is Template Editor</h1>">
     </things-template-editor>
 
-@demo ./things-code-editor/demo/demo-template-editor.html
+@demo demo/demo-template-editor.html
 -->
 <dom-module id="things-template-editor">
   <template>
@@ -25,7 +26,7 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
         @apply(--layout-vertical);
       }
 
-      juicy-ace-editor {
+      things-editor-script {
         @apply(--layout-flex);
         @apply(--layout-vertical);
         width: 94%;
@@ -37,7 +38,7 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
 
     <!-- ace-editor의 TEXT부분에 공백이 추가되지 않도록 {{zpl}}주의에 공백을 주지않도록 해야함. -->
     <div>
-      <juicy-ace-editor 
+      <things-editor-script 
         id="template-editor" 
         theme$="{{theme}}" 
         mode$="{{mode}}" 
@@ -45,7 +46,9 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
         readonly$="{{readonly}}" 
         softtabs$="{{softtabs}}" 
         tabsize$="{{tabsize}}" 
-        wrapmode$="{{wrapmode}}">{{source}}</juicy-ace-editor>
+        wrapmode$="{{wrapmode}}"
+        value ="{{source}}"></things-editor-script>
+
       <things-button-bar id="button-bar" buttons="[[buttons]]"></things-button-bar>
       <things-html-preview id="html-preview" width = "94%" height="430px" hidden></things-html-preview>
     </div>
@@ -237,9 +240,10 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
       /**
        * called when editor's change event called
        */
-      _onEditorChange: function(after) {
-        this.resource[this.templateField] = this.$['template-editor'].editor.getValue();
+      _onEditorChange: function(e) {
+        this.resource[this.codeField] = e.detail.value;
       },
+
 
       /**
        * Save template code
