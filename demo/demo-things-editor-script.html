@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    
+    <title>things-editor-script Demo</title>
+    
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link rel="import" href="../things-editor-script.html">
+
+  </head>
+  <body unresolved>
+
+    <template is="dom-bind" id="app">
+      <style is="custom-style">
+      :root {
+        --things-editor-script: {
+          height: 300px;
+        }
+      }
+
+      textarea {
+        height: 100px;
+        width: 100%;
+      }
+      </style>
+
+      <p>An example of <code>&lt;things-editor-script&gt;</code>:</p>
+
+      <things-editor-script id="editor"
+                            value="{{text}}"
+                            fontsize="12"
+                            theme="ace/theme/monokai"
+                            mode="ace/mode/javascript">
+      </things-editor-script>
+
+      <textarea value="[[text]]"></textarea>
+
+    </template>
+
+    <script>
+      window.addEventListener('WebComponentsReady', function(e) {
+        var app = document.querySelector('#app')
+
+        app.text = "Hello, World"
+      })
+    </script>
+
+  </body>
+</html>
