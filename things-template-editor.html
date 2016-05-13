@@ -29,7 +29,7 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
       things-editor-script {
         @apply(--layout-flex);
         @apply(--layout-vertical);
-        width: 94%;
+        width: 96%;
         height: 430px;
         margin: 7px 0 0 7px;
         overflow: auto;
@@ -47,10 +47,13 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
         softtabs$="{{softtabs}}" 
         tabsize$="{{tabsize}}" 
         wrapmode$="{{wrapmode}}"
-        value ="{{source}}"></things-editor-script>
+        value ="{{source}}">
+      </things-editor-script>
 
-      <things-button-bar id="button-bar" buttons="[[buttons]]"></things-button-bar>
-      <things-html-preview id="html-preview" width = "94%" height="430px" hidden></things-html-preview>
+      <things-button-bar id="button-bar" buttons="[[buttons]]">
+      </things-button-bar>
+      <things-html-preview id="html-preview" width = "94%" height="430px" hidden>
+      </things-html-preview>
     </div>
 
     <things-ajax 
@@ -277,6 +280,5 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
       }
 
     });
-
   </script>
 </dom-module>

@@ -3,7 +3,8 @@
 <script src="../ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <!--
-ace-editor의 polymer element이다.
+ace-editor의 polymer element
+
 Example:
          
   <things-editor-script id="editor"
@@ -11,6 +12,7 @@ Example:
                         theme="ace/theme/monokai"
                         mode="ace/mode/javascript">
   </things-editor-script>
+
 @demo demo/index-editor-script.html
 @hero hero.svg
 -->
@@ -28,12 +30,12 @@ Example:
     </style>
 
     <content></content>
-
   </template>
   
   <script>
     Polymer({
       is: 'things-editor-script',
+
       properties: {
         /**
          * `value`는 에디터에서 작성중인 contents이다.
@@ -42,6 +44,7 @@ Example:
           type: String,
           notify: true
         },
+
         /**
          * script editor theme
          * "ace/theme/chrome","ace/theme/clouds","ace/theme/crimson_editor","ace/theme/dawn","ace/theme/dreamweaver","ace/theme/eclipse","ace/theme/github","ace/theme/solarized_light","ace/theme/textmate","ace/theme/tomorrow","ace/theme/xcode","ace/theme/kuroir","ace/theme/katzenmilch","ace/theme/ambiance","ace/theme/chaos","ace/theme/clouds_midnight","ace/theme/cobalt","ace/theme/idle_fingers","ace/theme/kr_theme","ace/theme/merbivore","ace/theme/merbivore_soft","ace/theme/mono_industrial","ace/theme/monokai","ace/theme/pastel_on_dark","ace/theme/solarized_dark","ace/theme/terminal","ace/theme/tomorrow_night","ace/theme/tomorrow_night_blue","ace/theme/tomorrow_night_bright","ace/theme/tomorrow_night_eighties","ace/theme/twilight","ace/theme/vibrant_ink"
@@ -49,6 +52,7 @@ Example:
         theme: {
           type: String
         },
+
         /**
          * script editor mode
          * modes include belows
@@ -57,9 +61,11 @@ Example:
         mode: {
           type: String
         },
+
         fontsize: {
           type: Number
         },
+        
         /**
          * if enable softtabs or not
          */
@@ -67,6 +73,7 @@ Example:
           type: Boolean,
           value: false
         },
+        
         /**
          * tab size
          */
@@ -77,12 +84,14 @@ Example:
         readonly: {
           type: Boolean
         },
+        
         /**
          * text wrapmode 
          */
         wrapmode: {
           type: Boolean
         },
+        
         /**
          * ace editor object
          */
@@ -90,39 +99,48 @@ Example:
           type: Object
         }
       },
+
       observers: [
         '_configEditor(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode)',
         '_valueChanged(value)'
       ],
+      
       ready: function() {
-        this._attached = true        
+        this._attached = true
         var self = this;
-        if(!this.editor){
+
+        if(!this.editor) {
           this.editor = ace.edit(this, {
             initialContent: this.value
-          })
-          this.fire('editor-ready', this.editor)
+          });
+
+          this.fire('editor-ready', this.editor);
           // inject base editor styles
           this._injectTheme('#ace_editor\\.css');
           this._injectTheme('#ace-tm');
-          this.editor.getSession().on('change', function(event){
+
+          this.editor.getSession().on('change', function(event) {
             self._changedOnThis = true
             self.set('value', self.editor.getValue())
             self._changedOnThis = false
             self.fire('change',self);
           });
         }
+
         // handle theme changes
         this.editor.renderer.addEventListener("themeLoaded", this._onThemeLoaded.bind(this));
         // initial attributes
         this._configEditor()
       },
+      
       detached: function() {
         this._attached = false
       },
+      
       _configEditor: function(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode) {
         if(!this.editor || !this._attached)
-          return
+          return;
+
         this.editor.setTheme(this.theme);
         this.editor.setFontSize(this.fontsize);
         this.editor.setReadOnly(this.readonly);
@@ -133,13 +151,16 @@ Example:
         this.tabsize && session.setTabSize(this.tabsize);
         session.setUseWrapMode(this.wrapmode);
       },
+      
       _valueChanged: function(value) {
         if(this._changedOnThis)
-          return
-        if(this.editor){
+          return;
+
+        if(this.editor) {
           this.editor.setValue(value || '')
         }
       },
+      
       _onThemeLoaded: function(e) {
         var themeId = "#" + e.theme.cssClass;
         this._injectTheme(themeId);
@@ -148,11 +169,13 @@ Example:
         this.offsetHeight;
         this.style.display='';
       },
+      
       // inject the style tag of a theme to the element
-      _injectTheme: function(themeId){
+      _injectTheme: function(themeId) {
         var n = document.querySelector(themeId);
         this.appendChild(this._cloneStyle(n));
       },
+      
       //helper function to clone a style
       _cloneStyle: function(style) {
         var s = document.createElement('style');
@@ -160,6 +183,7 @@ Example:
         s.textContent = style.textContent;
         return s;
       }
+
     });
   </script>
 
