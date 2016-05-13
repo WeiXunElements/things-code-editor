@@ -28,28 +28,25 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
         @apply(--layout-flex);
         @apply(--layout-vertical);
         width: 96%;
-        height: 430px;
         margin: 7px 0 0 7px;
         overflow: auto;
       }
     </style>
 
-    <div>
-      <things-editor-script 
-        id="code-editor" 
-        theme$="{{theme}}" 
-        mode$="{{mode}}" 
-        fontsize$="{{fontsize}}" 
-        readonly$="{{readonly}}" 
-        softtabs$="{{softtabs}}" 
-        tabsize$="{{tabsize}}" 
-        wrapmode$="{{wrapmode}}"
-        value ="{{source}}">
-      </things-editor-script>
+    <things-editor-script 
+      id="code-editor" 
+      theme$="{{theme}}" 
+      mode$="{{mode}}" 
+      fontsize$="{{fontsize}}" 
+      readonly$="{{readonly}}" 
+      softtabs$="{{softtabs}}" 
+      tabsize$="{{tabsize}}" 
+      wrapmode$="{{wrapmode}}"
+      value ="{{source}}">
+    </things-editor-script>
 
-      <things-button-bar id="button-bar" buttons="[[buttons]]">
-      </things-button-bar>
-    </div>
+    <things-button-bar id="button-bar" buttons="[[buttons]]">
+    </things-button-bar>
 
     <things-ajax 
       id="save-code" 
