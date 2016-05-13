@@ -21,40 +21,36 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
 <dom-module id="things-template-editor">
   <template>
     <style>
-      :host {
-        display: block;
-        @apply(--layout-vertical);
-      }
+    :host {
+      display: block;
+      @apply(--layout-vertical);
+    }
 
-      things-editor-script {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
-        width: 96%;
-        height: 430px;
-        margin: 7px 0 0 7px;
-        overflow: auto;
-      }
+    things-editor-script {
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+      width: 96%;
+      margin: 7px 0 0 7px;
+      overflow: auto;
+    }
     </style>
 
-    <!-- ace-editor의 TEXT부분에 공백이 추가되지 않도록 {{zpl}}주의에 공백을 주지않도록 해야함. -->
-    <div>
-      <things-editor-script 
-        id="template-editor" 
-        theme$="{{theme}}" 
-        mode$="{{mode}}" 
-        fontsize$="{{fontsize}}" 
-        readonly$="{{readonly}}" 
-        softtabs$="{{softtabs}}" 
-        tabsize$="{{tabsize}}" 
-        wrapmode$="{{wrapmode}}"
-        value ="{{source}}">
-      </things-editor-script>
+    <things-editor-script 
+      id="template-editor" 
+      theme$="{{theme}}" 
+      mode$="{{mode}}" 
+      fontsize$="{{fontsize}}" 
+      readonly$="{{readonly}}" 
+      softtabs$="{{softtabs}}" 
+      tabsize$="{{tabsize}}" 
+      wrapmode$="{{wrapmode}}"
+      value ="{{source}}">
+    </things-editor-script>
 
-      <things-button-bar id="button-bar" buttons="[[buttons]]">
-      </things-button-bar>
-      <things-html-preview id="html-preview" width = "94%" height="430px" hidden>
-      </things-html-preview>
-    </div>
+    <things-button-bar id="button-bar" buttons="[[buttons]]">
+    </things-button-bar>
+    <things-html-preview id="html-preview" width = "94%" height="430px" hidden>
+    </things-html-preview>
 
     <things-ajax 
       id="save-code" 
@@ -65,7 +61,6 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
   </template>
 
   <script>
-    
     Polymer({
     
       is: 'things-template-editor',
@@ -278,7 +273,6 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
           this.$['html-preview'].srcdoc = this.$['template-editor'].editor.getValue();
         }
       }
-
     });
   </script>
 </dom-module>
