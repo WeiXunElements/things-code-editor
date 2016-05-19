@@ -27,7 +27,7 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       things-editor-script {
         @apply(--layout-flex);
         @apply(--layout-vertical);
-        width: 96%;
+        width: 98%;
         margin: 7px 0 0 7px;
         overflow: auto;
       }
@@ -45,8 +45,10 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       value ="{{source}}">
     </things-editor-script>
 
-    <things-button-bar id="button-bar" buttons="[[buttons]]">
-    </things-button-bar>
+    <paper-toolbar justify="end">
+      <things-button-bar id="button-bar" buttons="[[buttons]]">
+      </things-button-bar>
+    </paper-toolbar>
 
     <things-ajax 
       id="save-code" 

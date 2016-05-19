@@ -29,7 +29,7 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
     things-editor-script {
       @apply(--layout-flex);
       @apply(--layout-vertical);
-      width: 96%;
+      width: 98%;
       margin: 7px 0 0 7px;
       overflow: auto;
     }
@@ -47,10 +47,12 @@ things-template-editor. template성 텍스트를 편집 및 저장 할 수 있�
       value ="{{source}}">
     </things-editor-script>
 
-    <things-button-bar id="button-bar" buttons="[[buttons]]">
-    </things-button-bar>
-    <things-html-preview id="html-preview" width = "94%" height="430px" hidden>
-    </things-html-preview>
+    <paper-toolbar justify="end">
+      <things-button-bar id="button-bar" buttons="[[buttons]]">
+      </things-button-bar>
+      <things-html-preview id="html-preview" width = "94%" height="430px" hidden>
+      </things-html-preview>
+    </paper-toolbar>
 
     <things-ajax 
       id="save-code" 
