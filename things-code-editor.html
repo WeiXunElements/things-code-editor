@@ -45,7 +45,7 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       value ="{{source}}">
     </things-editor-script>
 
-    <paper-toolbar justify="end">
+    <paper-toolbar justify="end" hidden="[[hideToolbar]]">
       <things-button-bar id="button-bar" buttons="[[buttons]]">
       </things-button-bar>
     </paper-toolbar>
@@ -64,6 +64,15 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
       is: 'things-code-editor',
 
       properties: {
+        /**
+         * Toolbar 숨길지 여부 
+         */
+        hideToolbar: {
+          type: Boolean,
+          value: false,
+          computed: '_computeHideToolbar(buttons)'
+        },
+
         /**
          * script editor theme
          * "ace/theme/chrome","ace/theme/clouds","ace/theme/crimson_editor","ace/theme/dawn","ace/theme/dreamweaver","ace/theme/eclipse","ace/theme/github","ace/theme/solarized_light","ace/theme/textmate","ace/theme/tomorrow","ace/theme/xcode","ace/theme/kuroir","ace/theme/katzenmilch","ace/theme/ambiance","ace/theme/chaos","ace/theme/clouds_midnight","ace/theme/cobalt","ace/theme/idle_fingers","ace/theme/kr_theme","ace/theme/merbivore","ace/theme/merbivore_soft","ace/theme/mono_industrial","ace/theme/monokai","ace/theme/pastel_on_dark","ace/theme/solarized_dark","ace/theme/terminal","ace/theme/tomorrow_night","ace/theme/tomorrow_night_blue","ace/theme/tomorrow_night_bright","ace/theme/tomorrow_night_eighties","ace/theme/twilight","ace/theme/vibrant_ink"
@@ -187,6 +196,15 @@ things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼
        */
       getSource: function() {
         return this.codeField ? this.resource[this.codeField] : null;
+      },
+
+      /**
+       * hideToolbar값 계산 
+       *
+       * @param {Array} buttons
+       */
+      _computeHideToolbar: function(buttons) {
+        return (buttons == null || buttons.length == 0);
       },
 
       /**
