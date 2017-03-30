@@ -1,6 +1,19 @@
 # things-code-editor
 
-An element providing a starting point for your own reusable Polymer elements.
+### things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+
+  Example:
+
+```html
+    <things-code-editor
+      id="code-editor"
+      theme="ace/theme/monokai"
+      mode="ace/mode/javascript"
+      fontsize="12px"
+      tabsize="2"
+      source="var source = function() { console.log('this is Code Editor') };">
+    </things-code-editor>
+```
 
 
 ## Dependencies

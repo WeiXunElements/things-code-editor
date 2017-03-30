@@ -3,15 +3,16 @@
 <script src="../ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <!--
-ace-editor의 polymer element
+ #### ace-editor의 polymer element
 
-Example:
-         
-  <things-editor-script id="editor"
-                        value="{{text}}"
-                        theme="ace/theme/monokai"
-                        mode="ace/mode/javascript">
-  </things-editor-script>
+  Example:
+
+    <things-editor-script
+      id="editor"
+      value="{{text}}"
+      theme="ace/theme/monokai"
+      mode="ace/mode/javascript">
+    </things-editor-script>
 
 @demo demo/index-editor-script.html
 @hero hero.svg
@@ -31,7 +32,7 @@ Example:
 
     <content></content>
   </template>
-  
+
   <script>
     Polymer({
       is: 'things-editor-script',
@@ -47,17 +48,62 @@ Example:
 
         /**
          * script editor theme
-         * "ace/theme/chrome","ace/theme/clouds","ace/theme/crimson_editor","ace/theme/dawn","ace/theme/dreamweaver","ace/theme/eclipse","ace/theme/github","ace/theme/solarized_light","ace/theme/textmate","ace/theme/tomorrow","ace/theme/xcode","ace/theme/kuroir","ace/theme/katzenmilch","ace/theme/ambiance","ace/theme/chaos","ace/theme/clouds_midnight","ace/theme/cobalt","ace/theme/idle_fingers","ace/theme/kr_theme","ace/theme/merbivore","ace/theme/merbivore_soft","ace/theme/mono_industrial","ace/theme/monokai","ace/theme/pastel_on_dark","ace/theme/solarized_dark","ace/theme/terminal","ace/theme/tomorrow_night","ace/theme/tomorrow_night_blue","ace/theme/tomorrow_night_bright","ace/theme/tomorrow_night_eighties","ace/theme/twilight","ace/theme/vibrant_ink"
+         *
+         * "ace/theme/chrome","ace/theme/clouds","ace/theme/crimson_editor",
+         * "ace/theme/dawn","ace/theme/dreamweaver","ace/theme/eclipse",
+         * "ace/theme/github","ace/theme/solarized_light","ace/theme/textmate",
+         * "ace/theme/tomorrow","ace/theme/xcode","ace/theme/kuroir",
+         * "ace/theme/katzenmilch","ace/theme/ambiance","ace/theme/chaos",
+         * "ace/theme/clouds_midnight","ace/theme/cobalt","ace/theme/idle_fingers",
+         * "ace/theme/kr_theme","ace/theme/merbivore","ace/theme/merbivore_soft",
+         * "ace/theme/mono_industrial","ace/theme/monokai","ace/theme/pastel_on_dark",
+         * "ace/theme/solarized_dark","ace/theme/terminal","ace/theme/tomorrow_night",
+         * "ace/theme/tomorrow_night_blue","ace/theme/tomorrow_night_bright",
+         * "ace/theme/tomorrow_night_eighties","ace/theme/twilight","ace/theme/vibrant_ink"
+         ******
          */
         theme: {
           type: String
         },
 
         /**
+         * en-us
+         *
          * script editor mode
          * modes include belows
-         * "ace/mode/abap","ace/mode/actionscript","ace/mode/ada","ace/mode/apache_conf","ace/mode/asciidoc","ace/mode/assembly_x86","ace/mode/autohotkey","ace/mode/batchfile","ace/mode/c9search","ace/mode/c_cpp","ace/mode/cirru","ace/mode/clojure","ace/mode/cobol","ace/mode/coffee","ace/mode/coldfusion","ace/mode/csharp","ace/mode/css","ace/mode/curly","ace/mode/d","ace/mode/dart","ace/mode/diff","ace/mode/dot","ace/mode/erlang","ace/mode/ejs","ace/mode/forth","ace/mode/ftl","ace/mode/gherkin","ace/mode/glsl","ace/mode/golang","ace/mode/groovy","ace/mode/haml","ace/mode/handlebars","ace/mode/haskell","ace/mode/haxe","ace/mode/html","ace/mode/html_ruby","ace/mode/ini","ace/mode/jack","ace/mode/jade","ace/mode/java","ace/mode/javascript","ace/mode/json","ace/mode/jsoniq","ace/mode/jsp","ace/mode/jsx","ace/mode/julia","ace/mode/latex","ace/mode/less","ace/mode/liquid","ace/mode/lisp","ace/mode/livescript","ace/mode/logiql","ace/mode/lsl","ace/mode/lua","ace/mode/luapage","ace/mode/lucene","ace/mode/makefile","ace/mode/matlab","ace/mode/markdown","ace/mode/mel","ace/mode/mysql","ace/mode/mushcode","ace/mode/nix","ace/mode/objectivec","ace/mode/ocaml","ace/mode/pascal","ace/mode/perl","ace/mode/pgsql","ace/mode/php","ace/mode/powershell","ace/mode/prolog","ace/mode/properties","ace/mode/protobuf","ace/mode/python","ace/mode/r","ace/mode/rdoc","ace/mode/rhtml","ace/mode/ruby","ace/mode/rust","ace/mode/sass","ace/mode/scad","ace/mode/scala","ace/mode/smarty","ace/mode/scheme","ace/mode/scss","ace/mode/sh","ace/mode/sjs","ace/mode/space","ace/mode/snippets","ace/mode/soy_template","ace/mode/sql","ace/mode/stylus","ace/mode/svg","ace/mode/tcl","ace/mode/tex","ace/mode/text","ace/mode/textile","ace/mode/toml","ace/mode/twig","ace/mode/typescript","ace/mode/vbscript","ace/mode/velocity","ace/mode/verilog","ace/mode/xml","ace/mode/xquery","ace/mode/yaml"
-         */
+         ******
+         * 
+         * ko-kr
+         *
+         * script 편집기 mode. mode에는 다음이 포함됨.
+         * "ace/mode/abap","ace/mode/actionscript","ace/mode/ada","ace/mode/apache_conf",
+         * "ace/mode/asciidoc","ace/mode/assembly_x86","ace/mode/autohotkey",
+         * "ace/mode/batchfile","ace/mode/c9search","ace/mode/c_cpp","ace/mode/cirru",
+         * "ace/mode/clojure","ace/mode/cobol","ace/mode/coffee","ace/mode/coldfusion",
+         * "ace/mode/csharp","ace/mode/css","ace/mode/curly","ace/mode/d","ace/mode/dart",
+         * "ace/mode/diff","ace/mode/dot","ace/mode/erlang","ace/mode/ejs","ace/mode/forth",
+         * "ace/mode/ftl","ace/mode/gherkin","ace/mode/glsl","ace/mode/golang",
+         * "ace/mode/groovy","ace/mode/haml","ace/mode/handlebars","ace/mode/haskell",
+         * "ace/mode/haxe","ace/mode/html","ace/mode/html_ruby","ace/mode/ini",
+         * "ace/mode/jack","ace/mode/jade","ace/mode/java","ace/mode/javascript",
+         * "ace/mode/json","ace/mode/jsoniq","ace/mode/jsp","ace/mode/jsx",
+         * "ace/mode/julia","ace/mode/latex","ace/mode/less","ace/mode/liquid",
+         * "ace/mode/lisp","ace/mode/livescript","ace/mode/logiql","ace/mode/lsl",
+         * "ace/mode/lua","ace/mode/luapage","ace/mode/lucene","ace/mode/makefile",
+         * "ace/mode/matlab","ace/mode/markdown","ace/mode/mel","ace/mode/mysql",
+         * "ace/mode/mushcode","ace/mode/nix","ace/mode/objectivec","ace/mode/ocaml",
+         * "ace/mode/pascal","ace/mode/perl","ace/mode/pgsql","ace/mode/php",
+         * "ace/mode/powershell","ace/mode/prolog","ace/mode/properties",
+         * "ace/mode/protobuf","ace/mode/python","ace/mode/r","ace/mode/rdoc",
+         * "ace/mode/rhtml","ace/mode/ruby","ace/mode/rust","ace/mode/sass",
+         * "ace/mode/scad","ace/mode/scala","ace/mode/smarty","ace/mode/scheme",
+         * "ace/mode/scss","ace/mode/sh","ace/mode/sjs","ace/mode/space",
+         * "ace/mode/snippets","ace/mode/soy_template","ace/mode/sql",
+         * "ace/mode/stylus","ace/mode/svg","ace/mode/tcl","ace/mode/tex",
+         * "ace/mode/text","ace/mode/textile","ace/mode/toml","ace/mode/twig",
+         * "ace/mode/typescript","ace/mode/vbscript","ace/mode/velocity",
+         * "ace/mode/verilog","ace/mode/xml","ace/mode/xquery","ace/mode/yaml"
+         ******/
         mode: {
           type: String
         },
@@ -65,33 +111,33 @@ Example:
         fontsize: {
           type: Number
         },
-        
+
         /**
-         * if enable softtabs or not
+         * softtabs를 활성화 했는지 여부
          */
         softtabs: {
           type: Boolean,
           value: false
         },
-        
+
         /**
          * tab size
          */
         tabsize: {
           type: Number
         },
-        
+
         readonly: {
           type: Boolean
         },
-        
+
         /**
-         * text wrapmode 
+         * text wrapmode
          */
         wrapmode: {
           type: Boolean
         },
-        
+
         /**
          * ace editor object
          */
@@ -104,7 +150,7 @@ Example:
         '_configEditor(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode)',
         '_valueChanged(value)'
       ],
-      
+
       ready: function() {
         this._attached = true
         var self = this;
@@ -132,11 +178,11 @@ Example:
         // initial attributes
         this._configEditor()
       },
-      
+
       detached: function() {
         this._attached = false
       },
-      
+
       _configEditor: function(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode) {
         if(!this.editor || !this._attached)
           return;
@@ -145,13 +191,13 @@ Example:
         this.editor.setFontSize(this.fontsize);
         this.editor.setReadOnly(this.readonly);
         var session = this.editor.getSession();
-        
+
         session.setMode(this.mode);
         session.setUseSoftTabs(this.softtabs);
         this.tabsize && session.setTabSize(this.tabsize);
         session.setUseWrapMode(this.wrapmode);
       },
-      
+
       _valueChanged: function(value) {
         if(this._changedOnThis)
           return;
@@ -160,7 +206,7 @@ Example:
           this.editor.setValue(value || '')
         }
       },
-      
+
       _onThemeLoaded: function(e) {
         var themeId = "#" + e.theme.cssClass;
         this._injectTheme(themeId);
@@ -169,13 +215,13 @@ Example:
         this.offsetHeight;
         this.style.display='';
       },
-      
+
       // inject the style tag of a theme to the element
       _injectTheme: function(themeId) {
         var n = document.querySelector(themeId);
         this.appendChild(this._cloneStyle(n));
       },
-      
+
       //helper function to clone a style
       _cloneStyle: function(style) {
         var s = document.createElement('style');
