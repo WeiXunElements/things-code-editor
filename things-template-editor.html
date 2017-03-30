@@ -245,6 +245,7 @@
 
       /**
        * return editor source
+       * *****
        */
       getSource: function() {
         return this.templateField ? this.resource[this.templateField] : null;
@@ -252,6 +253,7 @@
 
       /**
        * on resource change
+       * *****
        * @param {Object} resource
        * @param {String} templateField
        */
@@ -263,6 +265,7 @@
 
       /**
        * 모드가 ace/mode/html 일 경우 preview 버튼 표시
+       * *****
        * @param  {String} mode
        * @param  {Array} buttons
        */
@@ -276,6 +279,7 @@
 
       /**
        * on form fields change
+       * *****
        * @param {Array} formFields
        */
       _onFormFieldsChanged: function(formFields) {
@@ -301,7 +305,7 @@
 
       /**
        * Save template code
-       *
+       ******
        * @param {Object} e
        */
       _saveCode: function(e) {
@@ -317,7 +321,7 @@
 
       /**
        * Show preview
-       *
+       ******
        * @param {Object} e
        */
       _showPreview :function(e) {

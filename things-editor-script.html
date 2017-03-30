@@ -72,7 +72,7 @@
          * script editor mode
          * modes include belows
          ******
-         * 
+         *
          * ko-kr
          *
          * script 편집기 mode. mode에는 다음이 포함됨.
@@ -107,13 +107,18 @@
         mode: {
           type: String
         },
-
+        /**
+         * font size
+         * @type {Object}
+         ******
+         */
         fontsize: {
           type: Number
         },
 
         /**
          * softtabs를 활성화 했는지 여부
+         ******
          */
         softtabs: {
           type: Boolean,
@@ -122,17 +127,23 @@
 
         /**
          * tab size
+         ******
          */
         tabsize: {
           type: Number
         },
-
+        /**
+         * readonly
+         * @type {Boolean}
+         * *****
+         */
         readonly: {
           type: Boolean
         },
 
         /**
          * text wrapmode
+         * *****
          */
         wrapmode: {
           type: Boolean
@@ -140,6 +151,7 @@
 
         /**
          * ace editor object
+         * *****
          */
         editor: {
           type: Object
