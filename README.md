@@ -3,7 +3,6 @@
 ## Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
   Example:
-
 ```html
     <things-code-editor
       id="code-editor"
@@ -18,6 +17,7 @@
 
 ## template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
   Example:
+  ```html
     <things-template-editor
         id="template-editor"
         theme="ace/theme/monokai"
@@ -26,19 +26,20 @@
         tabsize="2"
         source="<h1>Hello, this is Template Editor</h1>">
     </things-template-editor>
-    
+  ```
 # things-editor-script
 
 ## ace-editor를 이용한 테마 설정가능한 WEB Editor
 
   Example:
+  ```html
     <things-editor-script
       id="editor"
       value="{{text}}"
       theme="ace/theme/monokai"
       mode="ace/mode/javascript">
     </things-editor-script>
-    
+  ```
     
     
 ## Dependencies
