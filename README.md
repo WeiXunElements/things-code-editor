@@ -1,6 +1,6 @@
 # things-code-editor
 
-### things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+## Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
   Example:
 
@@ -14,8 +14,33 @@
       source="var source = function() { console.log('this is Code Editor') };">
     </things-code-editor>
 ```
+# things-template-editor
 
+## template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+  Example:
+    <things-template-editor
+        id="template-editor"
+        theme="ace/theme/monokai"
+        mode="ace/mode/html"
+        fontsize="10"
+        tabsize="2"
+        source="<h1>Hello, this is Template Editor</h1>">
+    </things-template-editor>
+    
+# things-editor-script
 
+## ace-editor를 이용한 테마 설정가능한 WEB Editor
+
+  Example:
+    <things-editor-script
+      id="editor"
+      value="{{text}}"
+      theme="ace/theme/monokai"
+      mode="ace/mode/javascript">
+    </things-editor-script>
+    
+    
+    
 ## Dependencies
 
 Element dependencies are managed via [Bower](http://bower.io/). You can
