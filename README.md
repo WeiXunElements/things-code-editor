@@ -1,6 +1,6 @@
 # things-code-editor
 
-## Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+## This is a component that can edit and save the code.
 
   Example:
 ```html
@@ -15,7 +15,7 @@
 ```
 # things-template-editor
 
-## template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
+## This is a component that can edit and save the template.
   Example:
   ```html
     <things-template-editor
@@ -29,7 +29,7 @@
   ```
 # things-editor-script
 
-## ace-editor를 이용한 테마 설정가능한 WEB Editor
+## This is a WEB Editor that can set the theme using ace-editor.
 
   Example:
   ```html
@@ -44,8 +44,7 @@
     
 ## Dependencies
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+Element dependencies are managed via [Bower](http://bower.io/). You can install that via:
 
     npm install -g bower
 
@@ -68,10 +67,3 @@ And you can run it via:
 
 Once running, you can preview your element at
 `http://localhost:8080/components/things-code-editor/`, where `things-code-editor` is the name of the directory containing it.
-
-
-## Example 1. Things code editor
-`<things-code-editor>` Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
-
-## Example 2. Things template editor
-`<things-template-editor>`. template성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
