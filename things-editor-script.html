@@ -244,10 +244,19 @@ Copyright © HatioLab Inc. All rights reserved.
         this.style.display='';
       },
 
-      // inject the style tag of a theme to the element
-      _injectTheme: function(themeId) {
-        var n = document.querySelector(themeId);
-        this.appendChild(this._cloneStyle(n));
+    /**
+    * Injects a style element into 'things-editor-script's shadow root
+    * @param {CSSSelector} selector for an element in the same shadow tree or document as `things-editor-script`
+    */
+
+      _injectTheme: function(selector) {
+        if(this.shadowRoot){
+            const lightStyle = this.getRootNode().querySelector(selector) || document.querySelector(selector);
+            this.shadowRoot.appendChild(lightStyle.cloneNode(true));
+        }else{
+            var n = document.querySelector(selector);
+            this.appendChild(this._cloneStyle(n));
+        }
       },
 
       //helper function to clone a style
