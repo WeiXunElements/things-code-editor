@@ -1,9 +1,9 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../things-libraries/things-ace-lib.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../things-libraries/things-ace-lib.html" />
 
 <!--
  #### ace-editor의 polymer element
@@ -24,18 +24,18 @@ Copyright © HatioLab Inc. All rights reserved.
 <dom-module id="things-editor-script">
   <template>
     <style>
-      :host{
+      :host {
         display: block;
         position: relative;
         width: 100%;
         height: 100%;
-        @apply(--things-editor-script)
+        @apply (--things-editor-script);
       }
 
       #editor {
         width: 100%;
         height: 100%;
-        @apply(--things-editor-script)
+        @apply (--things-editor-script);
       }
     </style>
 
@@ -53,7 +53,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         value: {
           type: String,
-          notify: true
+          notify: true,
         },
 
         /**
@@ -73,7 +73,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******
          */
         theme: {
-          type: String
+          type: String,
         },
 
         /**
@@ -115,7 +115,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * "ace/mode/verilog","ace/mode/xml","ace/mode/xquery","ace/mode/yaml"
          ******/
         mode: {
-          type: String
+          type: String,
         },
         /**
          * font size
@@ -123,7 +123,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******
          */
         fontsize: {
-          type: Number
+          type: Number,
         },
 
         /**
@@ -132,7 +132,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         softtabs: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -140,7 +140,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******
          */
         tabsize: {
-          type: Number
+          type: Number,
         },
         /**
          * readonly
@@ -148,7 +148,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * *****
          */
         readonly: {
-          type: Boolean
+          type: Boolean,
         },
 
         /**
@@ -156,7 +156,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * *****
          */
         wrapmode: {
-          type: Boolean
+          type: Boolean,
         },
 
         /**
@@ -164,7 +164,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * *****
          */
         printMarginColumn: {
-          type: Number
+          type: Number,
         },
 
         /**
@@ -172,47 +172,46 @@ Copyright © HatioLab Inc. All rights reserved.
          * *****
          */
         editor: {
-          type: Object
-        }
+          type: Object,
+        },
       },
 
       observers: [
         '_configEditor(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode)',
-        '_valueChanged(value)'
+        '_valueChanged(value)',
       ],
 
-      ready: function() {
-        this._attached = true
+      ready: function () {
+        this._attached = true;
         var self = this;
 
-        if(!this.editor) {
+        if (!this.editor) {
           this.editor = ace.edit(this.$.editor);
 
           // inject base editor styles
           this._injectTheme('#ace_editor\\.css');
           this._injectTheme('#ace-tm');
 
-          this.editor.getSession().on('change', function(event) {
-            self._changedOnThis = true
-            self.set('value', self.editor.getValue())
-            self._changedOnThis = false
-            self.fire('change',self);
+          this.editor.getSession().on('change', function (event) {
+            self._changedOnThis = true;
+            self.set('value', self.editor.getValue());
+            self._changedOnThis = false;
+            self.fire('change', self);
           });
         }
 
         // handle theme changes
-        this.editor.renderer.addEventListener("themeLoaded", this._onThemeLoaded.bind(this));
+        this.editor.renderer.addEventListener('themeLoaded', this._onThemeLoaded.bind(this));
         // initial attributes
-        this._configEditor()
+        this._configEditor();
       },
 
-      detached: function() {
-        this._attached = false
+      detached: function () {
+        this._attached = false;
       },
 
-      _configEditor: function(theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode) {
-        if(!this.editor || !this._attached)
-          return;
+      _configEditor: function (theme, mode, fontsize, softtabs, tabsize, readonly, wrapmode) {
+        if (!this.editor || !this._attached) return;
 
         this.editor.setTheme(this.theme);
         this.editor.setFontSize(this.fontsize);
@@ -226,39 +225,36 @@ Copyright © HatioLab Inc. All rights reserved.
         session.setUseWrapMode(this.wrapmode);
       },
 
-      _valueChanged: function(value) {
-        if(this._changedOnThis)
-          return;
+      _valueChanged: function (value) {
+        if (this._changedOnThis) return;
 
-        if(this.editor) {
-          this.editor.setValue(value || '')
+        if (this.editor) {
+          this.editor.setValue(value || '');
         }
       },
 
-      _onThemeLoaded: function(e) {
-        var themeId = "#" + e.theme.cssClass;
+      _onThemeLoaded: function (e) {
+        var themeId = '#' + e.theme.cssClass;
         this._injectTheme(themeId);
         // Workaround Chrome stable bug, force repaint
-        this.style.display='none';
+        this.style.display = 'none';
         this.offsetHeight;
-        this.style.display='';
+        this.style.display = '';
       },
 
       // inject the style tag of a theme to the element
-      _injectTheme: function(themeId) {
+      _injectTheme: function (themeId) {
         var n = document.querySelector(themeId);
         this.appendChild(this._cloneStyle(n));
       },
 
       //helper function to clone a style
-      _cloneStyle: function(style) {
+      _cloneStyle: function (style) {
         var s = document.createElement('style');
         s.id = style.id;
         s.textContent = style.textContent;
         return s;
-      }
-
+      },
     });
   </script>
-
 </dom-module>

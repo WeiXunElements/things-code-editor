@@ -1,96 +1,92 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
+    <title>things-template-editor demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <title>things-template-editor demo</title>
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../polymer/polymer.html" />
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+    <link rel="import" href="../../juicy-ace-editor/juicy-ace-editor.html" />
+    <link rel="import" href="../../things-html-preview/things-html-preview.html" />
+    <link rel="import" href="../../things-button/things-button-bar.html" />
 
-    <link rel="import" href="../../polymer/polymer.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../juicy-ace-editor/juicy-ace-editor.html">
-  <link rel="import" href="../../things-html-preview/things-html-preview.html">
-  <link rel="import" href="../../things-button/things-button-bar.html">
+    <link rel="import" href="../things-template-editor.html" />
 
-    <link rel="import" href="../things-template-editor.html">
+    <style is="custom-style">
+      .output {
+        margin-top: 20px;
+        word-wrap: break-word;
+        @apply (--paper-font-common-code);
+      }
+      form > paper-button {
+        width: 45%;
+        margin-top: 20px;
+      }
+      form > paper-button:not([disabled]) {
+        background: var(--paper-light-blue-500);
+        color: white;
+      }
+      button {
+        margin-top: 20px;
+      }
+      paper-spinner {
+        width: 14px;
+        height: 14px;
+        margin-right: 20px;
+      }
+      paper-dropdown-menu {
+        display: block;
+      }
+      demo-snippet {
+        --demo-snippet-code: {
+          max-height: 300px;
+        }
+      }
+    </style>
+  </head>
 
-  <style is="custom-style">
+  <body unresolved>
+    <demo-snippet class="centerd-demo">
+      <template>
+        <sample-template-editor></sample-template-editor>
 
-    .output {
-      margin-top: 20px;
-      word-wrap: break-word;
-      @apply(--paper-font-common-code);
-    }
-    form > paper-button {
-      width: 45%;
-      margin-top: 20px;
-    }
-    form > paper-button:not([disabled]) {
-      background: var(--paper-light-blue-500);
-      color: white;
-    }
-    button {
-      margin-top: 20px;
-    }
-    paper-spinner {
-      width: 14px;
-      height: 14px;
-      margin-right: 20px;
-    }
-    paper-dropdown-menu {
-      display: block;
-    }
-    demo-snippet {
-      --demo-snippet-code: {
-        max-height: 300px;
-      };
-    }
+        <dom-module id="sample-template-editor">
+          <template>
+            <things-template-editor
+              id="template-editor"
+              theme="ace/theme/monokai"
+              mode="ace/mode/html"
+              resource="{{code_resource}}"
+              template-field="source"
+              save-url="saveUrl"
+            >
+            </things-template-editor>
+          </template>
 
-  </style>
+          <script>
+            Polymer({
+              is: 'sample-template-editor',
 
-</head>
-
-<body unresolved>
-  <demo-snippet class="centerd-demo">
-    <template>
-      <sample-template-editor></sample-template-editor>
-
-      <dom-module id="sample-template-editor">
-        <template>
-          <things-template-editor 
-            id="template-editor"
-            theme="ace/theme/monokai"
-            mode="ace/mode/html"
-            resource="{{code_resource}}"
-            template-field="source"
-            save-url="saveUrl">
-          </things-template-editor>
-        </template>
-
-        <script>
-          Polymer({
-            is: 'sample-template-editor',
-
-            properties: {
-              code_resource: {
-                type: Object,
-                value: {
-                  name: 'test',
-                  source: '<body><h2>Things Template Editor</h2></body>'
-                }
-              }                  
-            }
-          });
-        </script>
-      </dom-module>
-    </template>
-  </demo-snippet>
-
-</body>
+              properties: {
+                code_resource: {
+                  type: Object,
+                  value: {
+                    name: 'test',
+                    source: '<body><h2>Things Template Editor</h2></body>',
+                  },
+                },
+              },
+            });
+          </script>
+        </dom-module>
+      </template>
+    </demo-snippet>
+  </body>
 </html>

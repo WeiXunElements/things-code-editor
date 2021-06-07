@@ -1,9 +1,9 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="things-editor-script.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="things-editor-script.html" />
 <!--
 #### things-code-editor. Code성 텍스트를 편집 및 저장 할 수 있는 컴퍼넌트
 
@@ -25,12 +25,12 @@ Copyright © HatioLab Inc. All rights reserved.
     <style>
       :host {
         display: block;
-        @apply(--layout-vertical);
+        @apply (--layout-vertical);
       }
 
       things-editor-script {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
+        @apply (--layout-flex);
+        @apply (--layout-vertical);
         width: 98%;
         margin: 7px 0 0 7px;
         overflow: auto;
@@ -46,25 +46,20 @@ Copyright © HatioLab Inc. All rights reserved.
       softtabs$="{{softtabs}}"
       tabsize$="{{tabsize}}"
       wrapmode="{{wrapmode}}"
-      value ="{{source}}">
+      value="{{source}}"
+    >
     </things-editor-script>
 
     <paper-toolbar justify="end" hidden="[[hideToolbar]]">
-      <things-button-bar id="button-bar" buttons="[[buttons]]">
-      </things-button-bar>
+      <things-button-bar id="button-bar" buttons="[[buttons]]"> </things-button-bar>
     </paper-toolbar>
 
-    <things-ajax
-      id="save-code"
-      resource-url="{{saveUrl}}"
-      resource-action="update"
-      body="{{saveResource}}">
+    <things-ajax id="save-code" resource-url="{{saveUrl}}" resource-action="update" body="{{saveResource}}">
     </things-ajax>
   </template>
 
   <script>
     Polymer({
-
       is: 'things-code-editor',
 
       properties: {
@@ -75,7 +70,7 @@ Copyright © HatioLab Inc. All rights reserved.
         hideToolbar: {
           type: Boolean,
           value: false,
-          computed: '_computeHideToolbar(buttons)'
+          computed: '_computeHideToolbar(buttons)',
         },
 
         /**
@@ -94,7 +89,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * "ace/theme/tomorrow_night_eighties","ace/theme/twilight","ace/theme/vibrant_ink"
          ******/
         theme: {
-          type: String
+          type: String,
         },
 
         /**
@@ -103,7 +98,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         resource: {
           type: Object,
-          notify: true
+          notify: true,
         },
 
         /**
@@ -111,7 +106,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type: String
          ******/
         codeField: {
-          type: String
+          type: String,
         },
 
         /**
@@ -120,7 +115,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         formFields: {
           type: Array,
-          observer: '_onFormFieldsChanged'
+          observer: '_onFormFieldsChanged',
         },
 
         /**
@@ -129,7 +124,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         saveUrl: {
           type: String,
-          notify: true
+          notify: true,
         },
 
         /**
@@ -138,7 +133,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type: Object
          ******/
         saveResource: {
-          type: Object
+          type: Object,
         },
 
         /**
@@ -181,7 +176,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * "ace/mode/verilog","ace/mode/xml","ace/mode/xquery","ace/mode/yaml"
          ******/
         mode: {
-          type: String
+          type: String,
         },
 
         /**
@@ -190,7 +185,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         fontsize: {
           type: String,
-          value: '14px'
+          value: '14px',
         },
 
         /**
@@ -199,7 +194,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         readonly: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -208,7 +203,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         softtabs: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -217,7 +212,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         tabsize: {
           type: Number,
-          value: 4
+          value: 4,
         },
 
         /**
@@ -226,7 +221,7 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         wrapmode: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -235,28 +230,28 @@ Copyright © HatioLab Inc. All rights reserved.
          ******/
         buttons: {
           type: Array,
-          value: [ {
-            id: 'save-btn',
-            text: 'save'
-          } ]
-        }
+          value: [
+            {
+              id: 'save-btn',
+              text: 'save',
+            },
+          ],
+        },
       },
 
       listeners: {
         'code-editor.editor-ready': '_onEditorReady',
         'code-editor.change': '_onEditorChange',
-        'button-bar.save-btn-tap': '_saveCode'
+        'button-bar.save-btn-tap': '_saveCode',
       },
 
-      observers: [
-        '_onResourceChanged(resource,codeField)'
-      ],
+      observers: ['_onResourceChanged(resource,codeField)'],
 
       /**
        * return editor source
        * *****
        */
-      getSource: function() {
+      getSource: function () {
         return this.codeField ? this.resource[this.codeField] : null;
       },
 
@@ -265,8 +260,8 @@ Copyright © HatioLab Inc. All rights reserved.
        *****
        * @param {Array} buttons
        */
-      _computeHideToolbar: function(buttons) {
-        return (buttons == null || buttons.length == 0);
+      _computeHideToolbar: function (buttons) {
+        return buttons == null || buttons.length == 0;
       },
 
       /**
@@ -275,11 +270,11 @@ Copyright © HatioLab Inc. All rights reserved.
        * @param {Object} resource
        * @param {String} codeField
        */
-      _onResourceChanged: function(resource, codeField) {
+      _onResourceChanged: function (resource, codeField) {
         this.resource = resource;
 
-        if(codeField) {
-          this.source = resource[codeField]
+        if (codeField) {
+          this.source = resource[codeField];
         }
       },
 
@@ -288,16 +283,18 @@ Copyright © HatioLab Inc. All rights reserved.
        * *****
        * @param {Array} formFields
        */
-      _onFormFieldsChanged: function(formFields) {
-        var codeFields = formFields.filter(function(field) { return (field.type == 'code-editor'); });
-        if(codeFields && codeFields.length > 0) this.codeField = codeFields[0].name;
+      _onFormFieldsChanged: function (formFields) {
+        var codeFields = formFields.filter(function (field) {
+          return field.type == 'code-editor';
+        });
+        if (codeFields && codeFields.length > 0) this.codeField = codeFields[0].name;
       },
 
       /**
        * when editor ready
        * *****
        */
-      _onEditorReady: function(e) {
+      _onEditorReady: function (e) {
         // event.detail should be a ace-editor
         e.detail.renderer.setShowGutter(false);
       },
@@ -306,23 +303,23 @@ Copyright © HatioLab Inc. All rights reserved.
        * called when editor's change event called
        * *****
        */
-      _onEditorChange: function(e) {
+      _onEditorChange: function (e) {
         this.resource[this.codeField] = e.detail.value;
       },
       /**
        * save code
        * *****
        */
-      _saveCode: function(e) {
+      _saveCode: function (e) {
         var evt = this.fire('things-template-editor-handle-save', e.detail, { cancelable: true });
-        if(evt.defaultPrevented) return;
+        if (evt.defaultPrevented) return;
 
         this.resource[this.codeField] = this.$['code-editor'].editor.getValue();
         this.saveResource = { id: this.resource.id };
         this.saveResource[this.codeField] = this.resource[this.codeField];
         this.$['save-code'].resourceId = this.resource.id;
         this.$['save-code'].generateRequest();
-      }
+      },
     });
   </script>
 </dom-module>

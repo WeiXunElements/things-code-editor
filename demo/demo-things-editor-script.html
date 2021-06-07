@@ -1,56 +1,54 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
 
-        <title>things-editor-script Demo</title>
+    <title>things-editor-script Demo</title>
 
-        <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
 
-    <link rel="import" href="../things-editor-script.html">
-
+    <link rel="import" href="../things-editor-script.html" />
   </head>
   <body unresolved>
-
     <template is="dom-bind" id="app">
       <style is="custom-style">
-      :root {
-        --things-editor-script: {
-          height: 300px;
+        :root {
+          --things-editor-script: {
+            height: 300px;
+          }
         }
-      }
 
-      textarea {
-        height: 100px;
-        width: 100%;
-      }
+        textarea {
+          height: 100px;
+          width: 100%;
+        }
       </style>
 
       <p>An example of <code>&lt;things-editor-script&gt;</code>:</p>
 
-      <things-editor-script id="editor"
-                            value="{{text}}"
-                            fontsize="12"
-                            theme="ace/theme/monokai"
-                            mode="ace/mode/javascript">
+      <things-editor-script
+        id="editor"
+        value="{{text}}"
+        fontsize="12"
+        theme="ace/theme/monokai"
+        mode="ace/mode/javascript"
+      >
       </things-editor-script>
 
       <textarea value="[[text]]"></textarea>
-
     </template>
 
     <script>
-      window.addEventListener('WebComponentsReady', function(e) {
-        var app = document.querySelector('#app')
+      window.addEventListener('WebComponentsReady', function (e) {
+        var app = document.querySelector('#app');
 
-        app.text = "Hello, World"
-      })
+        app.text = 'Hello, World';
+      });
     </script>
-
   </body>
 </html>
