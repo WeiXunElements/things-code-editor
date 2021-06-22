@@ -1,6 +1,6 @@
 {
   "name": "things-code-editor",
-  "version": "v2.2.2",
+  "version": "v2.2.3",
   "authors": [
     "Shenzhen Weixun"
   ],
@@ -17,10 +17,10 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
-    "things-libraries": "ThingsElements/things-libraries#^2.0.0",
-    "things-button": "ThingsElements/things-button",
-    "things-ajax": "ThingsElements/things-ajax",
-    "things-html-preview": "ThingsElements/things-html-preview"
+    "things-libraries": "WeiXunElements/things-libraries#^2.0.0",
+    "things-button": "WeiXunElements/things-button",
+    "things-ajax": "WeiXunElements/things-ajax",
+    "things-html-preview": "WeiXunElements/things-html-preview"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
